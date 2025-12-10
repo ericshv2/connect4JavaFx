@@ -17,7 +17,7 @@ public class StartScreen {
     public void show() {
         // Create welcome message
         Label welcomeLabel = new Label("Welcome to Connect 4!");
-        welcomeLabel.setFont(new Font("Arial", 32));
+        welcomeLabel.setFont(new Font("Courier New", 32));
         
         // Create instructions
         Label instructionsLabel = new Label("Press keys 1-7 to drop your coin");
@@ -38,7 +38,7 @@ public class StartScreen {
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(welcomeLabel, instructionsLabel, startButton);
-        layout.setStyle("-fx-background-color: #87CEEB;");
+        layout.setStyle("-fx-background-color: #10EB7A;");
         
         // Create scene
         Scene scene = new Scene(layout, 700, 600);

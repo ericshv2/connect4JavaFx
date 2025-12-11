@@ -1,19 +1,20 @@
+import java.io.File;
+
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import javafx.geometry.Pos;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Polygon;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import java.io.File;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class GameScreen {
     
@@ -41,14 +42,14 @@ public class GameScreen {
     public void show() {
         // Create status label
         statusLabel = new Label("Player 1's Turn (Red) - Press 1-7");
-        statusLabel.setFont(new Font("Arial", 20));
+        statusLabel.setFont(new Font("Courier New", 20));
         
         // Create column numbers (1-7) above the board
         HBox columnNumbers = new HBox(5);
         columnNumbers.setAlignment(Pos.CENTER);
         for (int i = 1; i <= 7; i++) {
             Label numLabel = new Label(String.valueOf(i));
-            numLabel.setFont(new Font("Arial", 24));
+            numLabel.setFont(new Font("Courier New", 24));
             numLabel.setStyle("-fx-font-weight: bold;");
             numLabel.setPrefWidth(85);
             numLabel.setAlignment(Pos.CENTER);
@@ -60,19 +61,19 @@ public class GameScreen {
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setHgap(5);
         gridPane.setVgap(5);
-        gridPane.setStyle("-fx-background-color: #0066CC; -fx-padding: 10;");
+        gridPane.setStyle("-fx-background-color: #87CEEB; -fx-padding: 10;");
         
         // Create the visual board
         drawBoard();
         
         // Create restart button
         Button restartButton = new Button("Restart Game");
-        restartButton.setFont(new Font("Arial", 16));
+        restartButton.setFont(new Font("Courier New", 16));
         restartButton.setOnAction(e -> restartGame());
         
         // Create main menu button
         Button menuButton = new Button("Main Menu");
-        menuButton.setFont(new Font("Arial", 16));
+        menuButton.setFont(new Font("Courier New", 16));
         menuButton.setOnAction(e -> {
             StartScreen startScreen = new StartScreen(stage);
             startScreen.show();
@@ -90,7 +91,7 @@ public class GameScreen {
         layout.setStyle("-fx-background-color: #87CEEB;");
         
         // Create scene
-        Scene scene = new Scene(layout, 700, 600);
+        Scene scene = new Scene(layout, 800, 700);
         
         // Handle keyboard input (keys 1-7)
         scene.setOnKeyPressed(e -> {
@@ -240,7 +241,7 @@ public class GameScreen {
             Media music = new Media(musicFile.toURI().toString());
             bgMusicPlayer = new MediaPlayer(music);
             bgMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop forever
-            bgMusicPlayer.setVolume(0.3); // Set volume to 30%
+            bgMusicPlayer.setVolume(0.1); // Set volume to 10%
             bgMusicPlayer.play();
         } catch (Exception e) {
             System.out.println("Background music not found or error playing: " + e.getMessage());

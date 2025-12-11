@@ -21,11 +21,11 @@ public class StartScreen {
         
         // Create instructions
         Label instructionsLabel = new Label("Press keys 1-7 to drop your coin");
-        instructionsLabel.setFont(new Font("Arial", 16));
+        instructionsLabel.setFont(new Font("Courier New", 16));
         
         // Create start button
         Button startButton = new Button("Start Game");
-        startButton.setFont(new Font("Arial", 20));
+        startButton.setFont(new Font("Courier New", 20));
         startButton.setPrefSize(150, 50);
         
         // When start button is clicked, show the game screen
@@ -38,7 +38,7 @@ public class StartScreen {
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(welcomeLabel, instructionsLabel, startButton);
-        layout.setStyle("-fx-background-color: #10EB7A;");
+        layout.setStyle("-fx-background-color: #84c5e0;");
         
         // Create scene
         Scene scene = new Scene(layout, 700, 600);

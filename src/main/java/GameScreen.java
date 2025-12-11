@@ -103,4 +103,71 @@ public void show() {
     stage.setScene(scene);
 }
 
+// Draw the game board
+private void drawBoard() {
+    gridPane.getChildren().clear();
+    
+    for (int row = 0; row < board.getRows(); row++) {
+        for (int col = 0; col < board.getCols(); col++) {
+            Circle circle = new Circle(40);
+            circle.setStroke(Color.BLACK);
+            circle.setStrokeWidth(2);
+            
+            int cellValue = board.getCell(row, col);
+            if (cellValue == 0) {
+                circle.setFill(Color.WHITE);
+            } else if (cellValue == 1) {
+                circle.setFill(Color.RED);
+            } else {
+                circle.setFill(Color.YELLOW);
+            }
+            
+            gridPane.add(circle, col, row);
+        }
+    }
+}
 
+// Handle a move
+private void handleMove(int col) {
+    // Try to drop coin
+    int row = board.dropCoin(col, currentPlayer);
+    
+    if (row == -1) {
+        // Column is full
+        statusLabel.setText("Column is full! Try another column.");
+        return;
+    }
+    
+    // Update the visual board
+    drawBoard();
+    
+    // Check for win
+    if (board.checkWin(currentPlayer)) {
+        gameOver = true;
+        statusLabel.setText("Player " + currentPlayer + " Wins!");
+        return;
+    }
+    
+    // Check for tie
+    if (board.isFull()) {
+        gameOver = true;
+        statusLabel.setText("It's a Tie!");
+        return;
+    }
+    
+    // Switch player
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+    String color = (currentPlayer == 1) ? "Red" : "Yellow";
+    statusLabel.setText("Player " + currentPlayer + "'s Turn (" + color + ") - Press 1-7");
+}
+
+// Restart the game
+private void restartGame() {
+    board.reset();
+    currentPlayer = 1;
+    gameOver = false;
+    statusLabel.setText("Player 1's Turn (Red) - Press 1-7");
+    drawBoard();
+}
+
+}

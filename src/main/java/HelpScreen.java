@@ -43,7 +43,7 @@ public class HelpScreen {
         
         // Create back button
         Button backButton = new Button("Back to Menu");
-        backButton.setFont(new Font("Courier New", 18));
+        backButton.setFont(new Font("Courier New", 15));
         backButton.setPrefSize(150, 40);
         
         // When back button is clicked, go back to start screen

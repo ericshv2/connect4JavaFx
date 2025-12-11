@@ -36,7 +36,7 @@ public class StartScreen {
         
         // Create help button
         Button helpButton = new Button("How to Play");
-        helpButton.setFont(new Font("Courier New", 20));
+        helpButton.setFont(new Font("Courier New", 15));
         helpButton.setPrefSize(150, 50);
         
         // When help button is clicked, show the help screen

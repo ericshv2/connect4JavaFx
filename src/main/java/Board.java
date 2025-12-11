@@ -85,6 +85,59 @@ public class Board {
         return false;
     }
     
+    // Get winning positions (returns array of [row, col] positions)
+    public int[][] getWinningPositions(int player) {
+        // Check horizontal
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols - 3; col++) {
+                if (grid[row][col] == player &&
+                    grid[row][col + 1] == player &&
+                    grid[row][col + 2] == player &&
+                    grid[row][col + 3] == player) {
+                    return new int[][]{{row, col}, {row, col + 1}, {row, col + 2}, {row, col + 3}};
+                }
+            }
+        }
+        
+        // Check vertical
+        for (int row = 0; row < rows - 3; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (grid[row][col] == player &&
+                    grid[row + 1][col] == player &&
+                    grid[row + 2][col] == player &&
+                    grid[row + 3][col] == player) {
+                    return new int[][]{{row, col}, {row + 1, col}, {row + 2, col}, {row + 3, col}};
+                }
+            }
+        }
+        
+        // Check diagonal (bottom-left to top-right)
+        for (int row = 3; row < rows; row++) {
+            for (int col = 0; col < cols - 3; col++) {
+                if (grid[row][col] == player &&
+                    grid[row - 1][col + 1] == player &&
+                    grid[row - 2][col + 2] == player &&
+                    grid[row - 3][col + 3] == player) {
+                    return new int[][]{{row, col}, {row - 1, col + 1}, {row - 2, col + 2}, {row - 3, col + 3}};
+                }
+            }
+        }
+        
+        // Check diagonal (top-left to bottom-right)
+        for (int row = 0; row < rows - 3; row++) {
+            for (int col = 0; col < cols - 3; col++) {
+                if (grid[row][col] == player &&
+                    grid[row + 1][col + 1] == player &&
+                    grid[row + 2][col + 2] == player &&
+                    grid[row + 3][col + 3] == player) {
+                    return new int[][]{{row, col}, {row + 1, col + 1}, {row + 2, col + 2}, {row + 3, col + 3}};
+                }
+            }
+        }
+        
+        return null;
+    }
+    
     // Check if board is full (tie)
     public boolean isFull() {
         for (int col = 0; col < cols; col++) {
